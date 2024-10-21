@@ -3,15 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Result Page</title>
+    <title>Products</title>
 </head>
 <body>
-    
-{% extends 'base.html' %}
+    {% extends 'base.html' %}
 {% block content %}
-<h1>Result: {{result}} </h1>
+<h1>Products</h1>
+&nbsp;
+<table class="table">
+<tr>
+<th>Name</th>
+<th>Price</th>
+</tr>
+{% for product in products %}
+<tr>
+<td>{{product.name}}</td>
+<td>{{product.price}}</td>
+</tr>
+{% endfor %}
+</table>
 <a href="{% url 'home' %}"><button type="button" class="btn btn-success">Home Window</button></a>
-
 {% endblock %}
 </body>
 </html>

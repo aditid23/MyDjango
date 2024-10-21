@@ -1,7 +1,37 @@
-{% extends 'base.html' %}
-{% include 'navbar.html' %}
-{% block content %}
-<h1>Dashboard</h1>
-<a href="{% url 'home' %}"><button type="button" class="btn btn-success">Home Window</button></a>
-
-{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+</head>
+<body>
+    {% extends 'base.html' %}
+    {% block content %}
+    <h1>Dashboard</h1>
+    <table class="table">
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>URL</th>
+        </tr>
+        {% if customers %}
+            {% for customer in customers %}
+                <tr>
+                    <td>{{ customer.name }}</td>
+                    <td>{{ customer.age }}</td>
+                    <td><a href="{% url 'customer' customer.id %}">View</a></td>
+                </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td colspan="3">No customers available.</td>
+            </tr>
+        {% endif %}
+    </table>
+    <a href="{% url 'home' %}"><button type="button" class="btn btn-success">Home Window</button></a>
+    <a href="{% url 'create_order' %}"><button type="button" class="btn btn-success">Create Order</button></a>
+    <a href="{% url 'orderpage' %}"><button type="button" class="btn btn-success">View Orders</button></a>
+    {% endblock %}
+</body>
+</html>
