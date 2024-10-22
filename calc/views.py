@@ -125,6 +125,7 @@ def register(request):
     return render(request, 'register.html', context)
 
 
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def loginPage(request):
     if request.user.is_authenticated:
         return redirect('home')
