@@ -22,24 +22,6 @@
 <body>
     {% extends 'base.html' %}
     {% block content %}
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Age</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for customer in customers %}
-            {% if customer.name and customer.age %} <!-- Avoid empty rows -->
-            <tr>
-                <td>{{ customer.name }}</td>
-                <td>{{ customer.age }}</td>
-            </tr>
-            {% endif %}
-            {% endfor %}
-        </tbody>
-    </table>
     
     <form action="insertData" method="post">
         {% csrf_token %}
